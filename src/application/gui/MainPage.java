@@ -40,4 +40,19 @@ public class MainPage extends AnchorPane {
 			fxmlLoader.load();
 	}
 	
+	public TextArea getInputLines(){
+		return inputLines;
+	}
+	
+	public TextArea getIgnoreWords(){
+		return ignoreWords;
+	}
+	
+	public TextArea getKwicIndex(){
+		return kwicIndex;
+	}
+	
+	public Button getGenerateButton(){
+		return generateBtn;
+	}
 }

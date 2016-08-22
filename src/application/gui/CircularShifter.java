@@ -1,24 +1,46 @@
 package application.gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 
 public class CircularShifter {
 	
 	private ArrayList<String> shifted;
+	private ArrayList<String> lines;
+	private HashSet<String> ignoreWords;
 	
-	public CircularShifter(ArrayList<String> fromInput){
-		this.shifted = fromInput;
+	public CircularShifter( ArrayList<String> lines, HashSet<String> ignoreWords){
+		this.lines = lines;
+		this.ignoreWords = ignoreWords;
+		shifted = new ArrayList<String>();
 		circularShift();
+		new Alphabetizer(shifted, ignoreWords);
 	}
 	
 	private void circularShift(){
-		for(int i=0; i<shifted.size(); i++){
-			
+		for(int i=0; i< lines.size(); i++){
+			ArrayList<String> words = (ArrayList<String>) Arrays.asList(lines.get(i).split(" "));
+			for(int z=0; z < words.size(); z++){
+				String keyWord = words.get(0);
+				if(!ignoreWords.contains(keyWord)){
+					shifted.add(convertToLine(words));
+				} 
+				words.remove(0);
+				words.add(keyWord);
+			}
 		}
 	}	
 	
-	public ArrayList<String> getShifted(){
-		return shifted;
+	private String convertToLine(ArrayList<String> words){
+		
+		String line = "";
+		for(int i=0 ; i<words.size(); i++){
+			line = line + " " + words.get(i);
+		}
+		line = line.trim();
+		
+		return line;
 	}
 }

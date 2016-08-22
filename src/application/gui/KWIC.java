@@ -1,6 +1,7 @@
 package application.gui;
 	
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -27,13 +28,9 @@ public class KWIC extends Application {
 	}
 	
 	public void firstArchi(){
-		
-	}
-
-	public void printOutput(ArrayList<String> fromAlphabetizer){
-		for(int i = 0 ; i < fromAlphabetizer.size(); i++){
-			System.out.println(fromAlphabetizer.get(i));
-		}
+		ArrayList<String> lines = new ArrayList<String>();
+		HashSet<String> ignoreWords = new HashSet<String>();
+		new CircularShifter(lines, ignoreWords);
 	}
 	
 	public void secondArchi(){

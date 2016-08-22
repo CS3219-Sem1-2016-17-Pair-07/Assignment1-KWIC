@@ -1,5 +1,7 @@
 package application.gui;
 	
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -22,5 +24,19 @@ public class KWIC extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public void firstArchi(){
+		
+	}
+
+	public void printOutput(ArrayList<String> fromAlphabetizer){
+		for(int i = 0 ; i < fromAlphabetizer.size(); i++){
+			System.out.println(fromAlphabetizer.get(i));
+		}
+	}
+	
+	public void secondArchi(){
+		
 	}
 }

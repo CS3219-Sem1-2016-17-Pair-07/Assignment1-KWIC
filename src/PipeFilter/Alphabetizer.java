@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-public class Alphabetizer {
+public class Alphabetizer extends Thread {
 	
 	private ArrayList<String> alphabetized;
 	private ArrayList<String> lines;
@@ -19,4 +19,15 @@ public class Alphabetizer {
 		Collections.sort(lines);
 		alphabetized = lines;
 	}	
+	
+	public void run() {
+		try {
+			while (true) {
+				//transform();
+			}
+		} catch (Exception ex) {
+			// input stream closed
+		}
+    }
+	
 }

@@ -20,12 +20,16 @@ public class CircularShifter {
 	
 	private void circularShift(){
 		for(int i=0; i< lines.size(); i++){
-			ArrayList<String> words = (ArrayList<String>) Arrays.asList(lines.get(i).split(" "));
+			ArrayList<String> words = new ArrayList(Arrays.asList(lines.get(i).split(" ")));
 			for(int z=0; z < words.size(); z++){
 				String keyWord = words.get(0);
-				if(!ignoreWords.contains(keyWord)){
+				
+				if(!ignoreWords.contains(keyWord.toLowerCase())){
 					shifted.add(convertToLine(words));
-				} 
+				} else {
+					keyWord = keyWord.toLowerCase();
+				}
+				
 				words.remove(0);
 				words.add(keyWord);
 			}

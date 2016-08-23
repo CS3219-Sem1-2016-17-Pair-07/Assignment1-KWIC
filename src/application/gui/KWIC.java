@@ -42,12 +42,17 @@ public class KWIC extends Application {
 	}
 	
 	public void pipeAndFilter(){
-
-		ArrayList<String> lines = (ArrayList<String>) Arrays.asList(page.getInputLines().getText().split(","));
+		
+		String [] tempLines = page.getInputLines().getText().split(",");
+		for(int i=0; i<tempLines.length; i++){
+			tempLines[i] = tempLines[i].trim();
+		}
+		ArrayList<String> lines = new ArrayList(Arrays.asList(tempLines));
+		
         String [] tempIgnoreWords = page.getIgnoreWords().getText().split(",");
         HashSet<String> ignoreWords = new HashSet<String>();
         for(int i=0; i<tempIgnoreWords.length ;i++){
-			ignoreWords.add(tempIgnoreWords[i]);
+			ignoreWords.add(tempIgnoreWords[i].trim().toLowerCase());
 		}
 		
 		new CircularShifter(lines, ignoreWords);

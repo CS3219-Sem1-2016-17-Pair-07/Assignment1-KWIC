@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<fx:root type="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1107.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1107.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextArea fx:id="inputLines" layoutX="14.0" layoutY="77.0" prefHeight="665.0" prefWidth="311.0" />
       <TextArea fx:id="ignoreWords" layoutX="348.0" layoutY="77.0" prefHeight="665.0" prefWidth="311.0" />
-      <Button fx:id="generateBtn" layoutX="684.0" layoutY="397.0" mnemonicParsing="false" text="Generate" />
+      <Button fx:id="pipeFilterBtn" layoutX="677.0" layoutY="358.0" mnemonicParsing="false" text="Pipe &amp; Filter" />
       <TextArea fx:id="kwicIndex" layoutX="772.0" layoutY="77.0" prefHeight="665.0" prefWidth="311.0" />
       <Label fx:id="inputLinesLabel" layoutX="123.0" layoutY="32.0" style="-fx-font-weight: bold;" text="Input Lines">
          <font>
@@ -28,5 +27,6 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Button fx:id="sharedBtn" layoutX="677.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Shared" />
    </children>
-</fx:root >
+</fx:root>

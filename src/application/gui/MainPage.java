@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 import PipeFilter.CircularShifter;
+import PipeFilter.PipeAndFilter;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,39 +89,11 @@ public class MainPage extends AnchorPane {
 		pipeFilterBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
-//				String[] tempLines = inputLines.getText().split(",");
-//				for (int i = 0; i < tempLines.length; i++) {
-//					tempLines[i] = tempLines[i].trim();
-//				}
-//				ArrayList<String> lines = new ArrayList(Arrays.asList(tempLines));
-//
-//				String[] tempIgnoreWords = ignoreWords.getText().split(",");
-//				HashSet<String> ignoreWords = new HashSet<String>();
-//				for (int i = 0; i < tempIgnoreWords.length; i++) {
-//					ignoreWords.add(tempIgnoreWords[i].trim().toLowerCase());
-//				}
-//				Shared shared = new Shared(lines, ignoreWords);
-//				kwicIndex.setText(shared.getOutput());
+				PipeAndFilter pipeAndFilter = new PipeAndFilter(inputLines.getText(), ignoreWords.getText());
 			}
 		});
 		
 		
 	}
 	
-	public void pipeAndFilter(){
-		
-		String [] tempLines = inputLines.getText().split(",");
-		for(int i=0; i<tempLines.length; i++){
-			tempLines[i] = tempLines[i].trim();
-		}
-		ArrayList<String> lines = new ArrayList(Arrays.asList(tempLines));
-		
-        String [] tempIgnoreWords = ignoreWords.getText().split(",");
-        HashSet<String> ignoreWords = new HashSet<String>();
-        for(int i=0; i<tempIgnoreWords.length ;i++){
-			ignoreWords.add(tempIgnoreWords[i].trim().toLowerCase());
-		}
-		
-        new CircularShifter(lines, ignoreWords);
-	}
 }

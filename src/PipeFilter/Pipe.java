@@ -1,14 +1,18 @@
 package PipeFilter;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Pipe {
-	private ArrayList<String> lines;
-	private HashSet<String> ignoreWords;
+	
+	private Information info;
 	
 	public Pipe(){
-		
-		// Connect filter
+	}
+	
+	public void write(Information info){
+		this.info = info;
+	}
+	
+	public Information read(){
+		return info;
 	}
 }

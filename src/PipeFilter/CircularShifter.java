@@ -4,21 +4,32 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class CircularShifter {
+public class CircularShifter extends Thread{
 	
-	private ArrayList<String> shifted;
-	private ArrayList<String> lines;
-	private HashSet<String> ignoreWords;
+	private Pipe inPipe;
+	private Pipe outPipe;
 	
-	public CircularShifter( ArrayList<String> lines, HashSet<String> ignoreWords){
-		this.lines = lines;
-		this.ignoreWords = ignoreWords;
-		shifted = new ArrayList<String>();
-		circularShift();
-		new Alphabetizer(shifted, ignoreWords);
+	public CircularShifter(Pipe inPipe, Pipe outPipe){
+		this.inPipe = inPipe;
+		this.outPipe = outPipe;
+	}
+	
+	public void run(){
+		while(true){
+			try{
+				circularShift();
+			} catch(Exception e){
+				// No inputs
+			}
+		}
 	}
 	
 	private void circularShift(){
+		Information info = inPipe.read();
+		ArrayList<String> shifted = new ArrayList<String>();
+		ArrayList<String> lines = info.getLines();
+		HashSet<String> ignoreWords = info.getIgnoreWords();
+		
 		for(int i=0; i< lines.size(); i++){
 			ArrayList<String> words = new ArrayList(Arrays.asList(lines.get(i).split(" ")));
 			for(int z=0; z < words.size(); z++){
@@ -34,6 +45,8 @@ public class CircularShifter {
 				words.add(keyWord);
 			}
 		}
+		
+		outPipe.write(new Information(shifted, ignoreWords));
 	}	
 	
 	private String convertToLine(ArrayList<String> words){

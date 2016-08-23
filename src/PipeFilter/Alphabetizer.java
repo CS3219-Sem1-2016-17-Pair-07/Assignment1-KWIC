@@ -1,32 +1,31 @@
 package PipeFilter;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 
 public class Alphabetizer extends Thread {
 	
-	private ArrayList<String> alphabetized;
-	private ArrayList<String> lines;
+	private Pipe inPipe;
+	private Pipe outPipe;
 	
-	public Alphabetizer(ArrayList<String> lines, HashSet<String> ignoreWords){
-		this.lines = lines;
-		alphabetized();
-		new Output(alphabetized, ignoreWords);
+	public Alphabetizer(Pipe inPipe, Pipe outPipe){
+		this.inPipe = inPipe;
+		this.outPipe = outPipe;
 	}
 	
 	private void alphabetized(){
-		Collections.sort(lines);
-		alphabetized = lines;
+		Information info = inPipe.read();
+		System.out.println(info.getLines().get(0));
+		Collections.sort(info.getLines());
+		outPipe.write(new Information(info.getLines(), info.getIgnoreWords()));
 	}	
 	
 	public void run() {
-		try {
-			while (true) {
-				//transform();
+		while(true){
+			try{
+				alphabetized();
+			} catch(Exception e){
+				
 			}
-		} catch (Exception ex) {
-			// input stream closed
 		}
     }
 	

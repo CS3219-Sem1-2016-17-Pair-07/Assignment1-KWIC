@@ -1,27 +1,50 @@
 package shared;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class InputStorage {
 
-	ArrayList<String> lines;
-	HashSet<String> ignoreWords;
+	ArrayList<String> linesAL;
+	HashSet<String> ignoreWordsHS;
 
-	public InputStorage(ArrayList<String> lines, HashSet<String> ignoreWords) {
-		this.lines = lines;
-		this.ignoreWords = ignoreWords;
+	public InputStorage(String lines, String ignoreWords) {
+		this.linesAL = removeInputDelimiters(lines);
+		this.ignoreWordsHS = removeIgnoreWordsDelimiters(ignoreWords);
+	}
+
+	private HashSet<String> removeIgnoreWordsDelimiters(String ignoreWords) {
+		String[] tempIgnoreWords = ignoreWords.split(",");
+		HashSet<String> ignoreWordsHS = new HashSet<String>();
+		for (int i = 0; i < tempIgnoreWords.length; i++) {
+			ignoreWordsHS.add(tempIgnoreWords[i].trim().toLowerCase());
+		}
+		return ignoreWordsHS;
+	}
+
+	private ArrayList<String> removeInputDelimiters(String lines) {
+		String[] tempLines = lines.split(",");
+		for (int i = 0; i < tempLines.length; i++) {
+			tempLines[i] = tempLines[i].trim();
+		}
+		ArrayList<String> linesAL = new ArrayList<String>(Arrays.asList(tempLines));
+		return linesAL;
 	}
 
 	public String getLine(int index) {
-		return lines.get(index);
+		return linesAL.get(index);
 	}
 
 	public int getSize() {
-		return lines.size();
+		return linesAL.size();
 	}
-	
-	public boolean checkIgnoreWords(String word){
-		return ignoreWords.contains(word.toLowerCase());
+
+	public boolean checkIgnoreWords(String word) {
+		return ignoreWordsHS.contains(word.toLowerCase());
+	}
+
+	public HashSet<String> getIgnoreWords() {
+		return ignoreWordsHS;
 	}
 }

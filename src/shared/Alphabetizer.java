@@ -6,7 +6,6 @@ import java.util.HashSet;
 
 public class Alphabetizer {
 
-	private ArrayList<String> alphabetized;
 	private ArrayList<String> lines;
 
 	public Alphabetizer(ArrayList<String> lines, HashSet<String> ignoreWord) {
@@ -16,7 +15,6 @@ public class Alphabetizer {
 
 	private void alphabetized() {
 		Collections.sort(lines);
-		alphabetized = lines;
 	}
 
 }

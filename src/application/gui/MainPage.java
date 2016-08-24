@@ -1,11 +1,7 @@
 package application.gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 
-import PipeFilter.CircularShifter;
 import PipeFilter.PipeAndFilter;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 
 /*
  * Start of the program
+ * Assumptions: Input must be correct with delimiters as ","
  */
 
 public class KWIC extends Application {

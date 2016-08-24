@@ -1,16 +1,17 @@
 package shared;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CircularShift {
-	public CircularShift(Input inputStorage, Output outputStorage) {
-		for (int i = 0; i < inputStorage.getSize(); i++) {
-			ArrayList<String> words = new ArrayList<String>(Arrays.asList(inputStorage.getLine(i).split(" ")));
+	public CircularShift(Output outputStorage) throws IOException {
+		for (int i = 0; i < LineStorage.getInstance().getSize(); i++) {
+			ArrayList<String> words = new ArrayList<String>(Arrays.asList(LineStorage.getInstance().getLine(i).split(" ")));
 			for (int z = 0; z < words.size(); z++) {
 				String keyWord = words.get(0);
 
-				if (!inputStorage.checkIgnoreWords(keyWord)) {
+				if (!LineStorage.getInstance().checkIgnoreWords(keyWord)) {
 					outputStorage.add(convertToLine(words));
 				} else {
 					keyWord = keyWord.toLowerCase();

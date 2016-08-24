@@ -8,7 +8,7 @@ import java.util.HashSet;
 import application.gui.MainPage;
 
 /*
- * Temporary input storage area for all input data
+ * Input class to read in data from the UI to store into another class
  */
 
 public class Input {
@@ -19,6 +19,7 @@ public class Input {
 	public Input() throws IOException {
 		this.linesAL = removeInputDelimiters(MainPage.getInstance().getInputLines().getText());
 		this.ignoreWordsHS = removeIgnoreWordsDelimiters(MainPage.getInstance().getIgnoreWords().getText());
+		LineStorage.getInstance(linesAL, ignoreWordsHS);
 	}
 
 	private HashSet<String> removeIgnoreWordsDelimiters(String ignoreWords) {
@@ -37,21 +38,5 @@ public class Input {
 		}
 		ArrayList<String> linesAL = new ArrayList<String>(Arrays.asList(tempLines));
 		return linesAL;
-	}
-
-	public String getLine(int index) {
-		return linesAL.get(index);
-	}
-
-	public int getSize() {
-		return linesAL.size();
-	}
-
-	public boolean checkIgnoreWords(String word) {
-		return ignoreWordsHS.contains(word.toLowerCase());
-	}
-
-	public HashSet<String> getIgnoreWords() {
-		return ignoreWordsHS;
 	}
 }

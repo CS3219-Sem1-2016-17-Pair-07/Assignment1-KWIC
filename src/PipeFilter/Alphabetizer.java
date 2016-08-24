@@ -1,5 +1,6 @@
 package PipeFilter;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class Alphabetizer extends Thread {
@@ -14,8 +15,9 @@ public class Alphabetizer extends Thread {
 	
 	private void alphabetized(){
 		Information info = inPipe.read();
-		Collections.sort(info.getLines());
-		outPipe.write(new Information(info.getLines(), info.getIgnoreWords()));
+		ArrayList<String> temp = info.getLines();
+		Collections.sort(temp);
+		outPipe.write(new Information(temp, info.getIgnoreWords()));
 	}	
 	
 	public void run() {

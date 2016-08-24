@@ -21,7 +21,7 @@ public class Output extends Thread {
 		String tempStr = "";
 		// If input is modified, update output
 		for (int i = 0; i < lines.size(); i++) {
-			tempStr = lines.get(i) + "\n" + tempStr;
+			tempStr = tempStr + lines.get(i)+ "\n";
 		}
 		tempStr = tempStr.trim();
 		TextArea textArea = MainPage.getInstance().getPipeKWICIndex();

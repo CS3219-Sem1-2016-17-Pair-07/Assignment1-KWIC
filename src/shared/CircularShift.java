@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CircularShift {
-	public CircularShift(InputStorage inputStorage, OutputStorage outputStorage) {
+	public CircularShift(Input inputStorage, Output outputStorage) {
 		for (int i = 0; i < inputStorage.getSize(); i++) {
 			ArrayList<String> words = new ArrayList<String>(Arrays.asList(inputStorage.getLine(i).split(" ")));
 			for (int z = 0; z < words.size(); z++) {

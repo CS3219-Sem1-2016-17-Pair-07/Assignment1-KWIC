@@ -10,14 +10,14 @@ import application.gui.MainPage;
 
 public class Shared {
 
-	private InputStorage inputStorage;
-	private OutputStorage outputStorage;
+	private Input inputStorage;
+	private Output outputStorage;
 
 	public Shared(String lines, String ignoreWords) throws IOException {
 		// Put lines and ignore words into input class
-		inputStorage = new InputStorage(lines, ignoreWords);
+		inputStorage = new Input(lines, ignoreWords);
 		// Initialize output class
-		outputStorage = new OutputStorage();
+		outputStorage = new Output();
 		// Calls the Circular Shifter
 		new CircularShift(inputStorage, outputStorage);
 		// Calls the Alphabetizer

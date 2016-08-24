@@ -2,10 +2,10 @@ package shared;
 
 import java.util.ArrayList;
 
-public class OutputStorage {
+public class Output {
 	private ArrayList<String> outputLines;
 
-	public OutputStorage() {
+	public Output() {
 		outputLines = new ArrayList<String>();
 	}
 

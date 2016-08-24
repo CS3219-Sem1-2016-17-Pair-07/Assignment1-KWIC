@@ -8,12 +8,12 @@ import java.util.HashSet;
  * Temporary input storage area for all input data
  */
 
-public class InputStorage {
+public class Input {
 
 	ArrayList<String> linesAL;
 	HashSet<String> ignoreWordsHS;
 
-	public InputStorage(String lines, String ignoreWords) {
+	public Input(String lines, String ignoreWords) {
 		this.linesAL = removeInputDelimiters(lines);
 		this.ignoreWordsHS = removeIgnoreWordsDelimiters(ignoreWords);
 	}

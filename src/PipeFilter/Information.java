@@ -3,6 +3,7 @@ package PipeFilter;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+// This class will be the object passed from pipe to pipe
 public class Information {
 	
 	private ArrayList<String> lines;

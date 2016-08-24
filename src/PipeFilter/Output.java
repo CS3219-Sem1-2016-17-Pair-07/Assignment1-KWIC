@@ -7,6 +7,9 @@ import application.gui.MainPage;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
+/*
+ * Class to read data from pipe and show it on the UI
+ */
 public class Output extends Thread {
 
 	private Pipe inPipe;
@@ -48,6 +51,7 @@ public class Output extends Thread {
 				// Sleep is needed if not will hang! Listen every sec
 				Output.sleep(1000);
 			} catch (Exception e) {
+				System.out.println("Output encounters error : " + e.getMessage());
 			}
 		}
 	}

@@ -3,6 +3,9 @@ package PipeFilter;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/*
+ * This class capitalize the first letter of every line and sorts them according to alphabetical order
+ */
 public class Alphabetizer extends Thread {
 	
 	private Pipe inPipe;
@@ -46,7 +49,7 @@ public class Alphabetizer extends Thread {
 				// Sleep is needed if not will hang! Listen every sec
 				Alphabetizer.sleep(1000);
 			} catch(Exception e){
-				
+				System.out.println("Alphabetizer encounters error : " + e.getMessage());
 			}
 		}
     }

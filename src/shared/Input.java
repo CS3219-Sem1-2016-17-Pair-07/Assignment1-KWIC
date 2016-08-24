@@ -13,8 +13,8 @@ import application.gui.MainPage;
 
 public class Input {
 
-	ArrayList<String> linesAL;
-	HashSet<String> ignoreWordsHS;
+	private ArrayList<String> linesAL;
+	private HashSet<String> ignoreWordsHS;
 
 	// Stores the data into shared Line
 	public Input() throws IOException {

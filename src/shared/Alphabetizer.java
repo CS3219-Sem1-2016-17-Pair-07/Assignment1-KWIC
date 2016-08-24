@@ -16,7 +16,9 @@ public class Alphabetizer {
 		for (int i = 0; i < IndexStorage.getInstance().getOutputLines().size(); i++) {
 			String tempStr = IndexStorage.getInstance().getOutputLines().get(i);
 			if (tempStr.length() > 1) {
-				tempLines.add(tempStr.substring(0, 1).toUpperCase() + tempStr.substring(1, tempStr.length()));
+				tempLines.add(tempStr.substring(0, 1).toUpperCase() + tempStr.substring(1).toLowerCase());
+			} else {
+				tempLines.add(tempStr.substring(0, 1).toUpperCase());
 			}
 		}
 		Collections.sort(tempLines);

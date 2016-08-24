@@ -6,8 +6,8 @@ import java.util.HashSet;
 
 public class InputStorage {
 
-	ArrayList<String> lines;
-	HashSet<String> ignoreWords;
+	private ArrayList<String> lines;
+	private HashSet<String> ignoreWords;
 
 	private static InputStorage instance = null;
 

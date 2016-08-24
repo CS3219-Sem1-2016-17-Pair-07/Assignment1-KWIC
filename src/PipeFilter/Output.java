@@ -19,17 +19,20 @@ public class Output extends Thread {
 
 	private void showOutput() throws IOException {
 		Information info = inPipe.read();
+		
+		// If input is modified, update output
 		if(prevInfo == null || !prevInfo.equals(info)){
 			prevInfo = info;
 			ArrayList<String> lines = info.getLines();
 			String tempStr = "";
-			// If input is modified, update output
+			
 			for (int i = 0; i < lines.size(); i++) {
 				tempStr = tempStr + lines.get(i)+ "\n";
 			}
 			tempStr = tempStr.trim();
 			final String finalStr = tempStr;
 			TextArea textArea = MainPage.getInstance().getPipeKWICIndex();
+			// Need to wait for FX thread to modify
 			Platform.runLater(new Runnable() {
 	            @Override public void run() {
 	            	textArea.setText(finalStr);

@@ -2,6 +2,10 @@ package shared;
 
 import java.util.ArrayList;
 
+/*
+ * This class will hold all the data that is waiting to get output to the UI
+ */
+
 public class IndexStorage {
 
 	private static IndexStorage instance = null;

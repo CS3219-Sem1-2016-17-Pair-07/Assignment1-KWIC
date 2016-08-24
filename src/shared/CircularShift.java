@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+ * Class to do the circular shifting of the lines retrieved from the 
+ * shared Input Storage and then store the data into Index Storage
+ */
+
 public class CircularShift {
 	public CircularShift() throws IOException {
 		for (int i = 0; i < InputStorage.getInstance().getSize(); i++) {
@@ -24,6 +29,7 @@ public class CircularShift {
 		}
 	}
 
+	// Returns the array list for the line as a whole line
 	private String convertToLine(ArrayList<String> words) {
 
 		String line = "";

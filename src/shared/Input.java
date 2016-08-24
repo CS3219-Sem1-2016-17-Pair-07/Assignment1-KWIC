@@ -16,13 +16,14 @@ public class Input {
 	private ArrayList<String> linesAL;
 	private HashSet<String> ignoreWordsHS;
 
-	// Stores the data into shared Line
+	// Stores the data into shared input storage class
 	public Input() throws IOException {
 		linesAL = removeInputDelimiters(MainPage.getInstance().getInputLines().getText());
 		ignoreWordsHS = removeIgnoreWordsDelimiters(MainPage.getInstance().getIgnoreWords().getText());
 		InputStorage.getInstance(linesAL, ignoreWordsHS);
 	}
 
+	// Remove delimiters and temporarily store ignore words in a hash set
 	private HashSet<String> removeIgnoreWordsDelimiters(String ignoreWords) {
 		String[] tempIgnoreWords = ignoreWords.split(",");
 		HashSet<String> ignoreWordsHS = new HashSet<String>();
@@ -32,6 +33,7 @@ public class Input {
 		return ignoreWordsHS;
 	}
 
+	// Remove delimiters and temporarily store input lines in an array list
 	private ArrayList<String> removeInputDelimiters(String lines) {
 		String[] tempLines = lines.split(",");
 		for (int i = 0; i < tempLines.length; i++) {

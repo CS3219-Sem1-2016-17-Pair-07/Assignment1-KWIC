@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import application.gui.MainPage;
 
+/*
+ * Class to retrieve the output data and show it on the UI
+ */
+
 public class Output {
 
 	public Output() throws IOException {

@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+/*
+ * This class will hold the input lines and the ignore words
+ */
+
 public class InputStorage {
 
 	private ArrayList<String> lines;

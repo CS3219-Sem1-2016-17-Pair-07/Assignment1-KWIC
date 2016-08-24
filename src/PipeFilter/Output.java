@@ -2,7 +2,6 @@ package PipeFilter;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import application.gui.MainPage;
 import javafx.application.Platform;

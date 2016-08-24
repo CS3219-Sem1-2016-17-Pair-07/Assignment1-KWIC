@@ -7,6 +7,7 @@ public class Alphabetizer extends Thread {
 	
 	private Pipe inPipe;
 	private Pipe outPipe;
+	private Information prevInfo;
 	
 	public Alphabetizer(Pipe inPipe, Pipe outPipe){
 		this.inPipe = inPipe;
@@ -15,22 +16,25 @@ public class Alphabetizer extends Thread {
 	
 	private void alphabetized(){
 		Information info = inPipe.read();
-		ArrayList<String> temp = info.getLines();
-		Collections.sort(temp);
-	    temp = capKeywords(temp);
-		outPipe.write(new Information(temp, info.getIgnoreWords()));
+		if(prevInfo == null || !prevInfo.equals(info)){
+			prevInfo = info;
+			ArrayList<String> temp = info.getLines();
+			temp = capKeywords(temp);
+			Collections.sort(temp);
+			outPipe.write(new Information(temp, info.getIgnoreWords()));
+		}
 	}	
 	
 	private ArrayList<String> capKeywords(ArrayList<String> lines){
 		for(int i=0; i<lines.size(); i++){
 			String tempStr = lines.get(i);
 			lines.set(i, tempStr.substring(0, 1));
-			/*
+			
 			if(tempStr.length() > 1){
-				lines.set(i, tempStr.substring(0, 1).toUpperCase());
+				lines.set(i, tempStr.substring(0, 1).toUpperCase() + tempStr.substring(1).toLowerCase());
 			} else {
 				lines.set(i, tempStr.substring(0, 1).toUpperCase());
-			}*/
+			}
 		}
 		return lines;
 	}
@@ -39,6 +43,8 @@ public class Alphabetizer extends Thread {
 		while(true){
 			try{
 				alphabetized();
+				// Sleep is needed if not will hang! Listen every sec
+				Alphabetizer.sleep(1000);
 			} catch(Exception e){
 				
 			}

@@ -8,6 +8,7 @@ public class CircularShifter extends Thread{
 	
 	private Pipe inPipe;
 	private Pipe outPipe;
+	private Information prevInfo;
 	
 	public CircularShifter(Pipe inPipe, Pipe outPipe){
 		this.inPipe = inPipe;
@@ -18,6 +19,8 @@ public class CircularShifter extends Thread{
 		while(true){
 			try{
 				circularShift();
+				// Sleep is needed if not will hang! Listen every sec
+				CircularShifter.sleep(1000);
 			} catch(Exception e){
 				// No inputs
 			}
@@ -26,27 +29,30 @@ public class CircularShifter extends Thread{
 	
 	private void circularShift(){
 		Information info = inPipe.read();
-		ArrayList<String> shifted = new ArrayList<String>();
-		ArrayList<String> lines = info.getLines();
-		HashSet<String> ignoreWordsSet = info.getIgnoreWords();
-		
-		for(int i=0; i< lines.size(); i++){
-			ArrayList<String> words = new ArrayList<String>(Arrays.asList(lines.get(i).split(" ")));
-			for(int z=0; z < words.size(); z++){
-				String keyWord = words.get(0);
-				
-				if(!ignoreWordsSet.contains(keyWord.toLowerCase())){
-					shifted.add(convertToLine(words));
-				} else {
-					keyWord = keyWord.toLowerCase();
+		if(prevInfo == null || !prevInfo.equals(info)){
+			prevInfo = info;
+			ArrayList<String> shifted = new ArrayList<String>();
+			ArrayList<String> lines = info.getLines();
+			HashSet<String> ignoreWordsSet = info.getIgnoreWords();
+			
+			for(int i=0; i< lines.size(); i++){
+				ArrayList<String> words = new ArrayList<String>(Arrays.asList(lines.get(i).split(" ")));
+				for(int z=0; z < words.size(); z++){
+					String keyWord = words.get(0);
+					
+					if(!ignoreWordsSet.contains(keyWord.toLowerCase())){
+						shifted.add(convertToLine(words));
+					} else {
+						keyWord = keyWord.toLowerCase();
+					}
+					
+					words.remove(0);
+					words.add(keyWord);
 				}
-				
-				words.remove(0);
-				words.add(keyWord);
 			}
+			
+			outPipe.write(new Information(shifted, ignoreWordsSet));
 		}
-		
-		outPipe.write(new Information(shifted, ignoreWordsSet));
 	}	
 	
 	private String convertToLine(ArrayList<String> words){

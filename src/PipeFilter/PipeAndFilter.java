@@ -1,9 +1,5 @@
 package PipeFilter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-
 public class PipeAndFilter {
 	
 	private static Pipe p1;

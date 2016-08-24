@@ -11,7 +11,7 @@
       <TextArea fx:id="inputLines" layoutX="14.0" layoutY="77.0" prefHeight="665.0" prefWidth="311.0" />
       <TextArea fx:id="ignoreWords" layoutX="348.0" layoutY="77.0" prefHeight="665.0" prefWidth="311.0" />
       <Button fx:id="pipeFilterBtn" layoutX="671.0" layoutY="213.0" mnemonicParsing="false" text="Pipe &amp; Filter &gt;" />
-      <TextArea fx:id="pipeKWICIndex" layoutX="772.0" layoutY="77.0" prefHeight="323.0" prefWidth="311.0" />
+      <TextArea fx:id="pipeKWICIndex" layoutX="772.0" layoutY="77.0" prefHeight="323.0" prefWidth="311.0" editable="false" mouseTransparent="true" focusTraversable="false"/>
       <Label fx:id="inputLinesLabel" layoutX="123.0" layoutY="32.0" style="-fx-font-weight: bold;" text="Input Lines">
          <font>
             <Font size="18.0" />

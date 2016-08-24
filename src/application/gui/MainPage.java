@@ -76,7 +76,7 @@ public class MainPage extends AnchorPane {
 		pipeFilterBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
-				PipeAndFilter pipeAndFilter = new PipeAndFilter(inputLines.getText(), ignoreWords.getText());
+				PipeAndFilter.getInstance(inputLines.getText(), ignoreWords.getText());
 			}
 		});
 		

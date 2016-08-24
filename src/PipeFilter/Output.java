@@ -22,8 +22,10 @@ public class Output extends Thread {
 			tempStr = lines.get(i) + "\n" + tempStr;
 		}
 		tempStr = tempStr.trim();
-		if (!tempStr.equals(MainPage.pipeKWICIndex.getText())) {
+		System.out.println(MainPage.pipeKWICIndex.getText());
+		if (!tempStr.equals(MainPage.pipeKWICIndex.getText()) || MainPage.pipeKWICIndex.getText() != null) {
 			// Update output using tempStr
+			System.out.println(tempStr);
 			MainPage.pipeKWICIndex.setText(tempStr);
 		}
 	}
@@ -33,7 +35,7 @@ public class Output extends Thread {
 			try {
 				showOutput();
 			} catch (Exception e) {
-
+				e.printStackTrace();
 			}
 		}
 	}

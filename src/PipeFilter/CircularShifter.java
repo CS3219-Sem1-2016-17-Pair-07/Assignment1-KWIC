@@ -29,7 +29,7 @@ public class CircularShifter extends Thread{
 	
 	private void circularShift(){
 		Information info = inPipe.read();
-		if(prevInfo == null || !prevInfo.equals(info)){
+		if(prevInfo == null || (!prevInfo.equals(info)&& info!=null)){
 			prevInfo = info;
 			ArrayList<String> shifted = new ArrayList<String>();
 			ArrayList<String> lines = info.getLines();

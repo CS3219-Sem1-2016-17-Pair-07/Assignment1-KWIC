@@ -20,7 +20,7 @@ public class Output extends Thread {
 		Information info = inPipe.read();
 		
 		// If input is modified, update output
-		if(prevInfo == null || !prevInfo.equals(info)){
+		if(prevInfo == null || (!prevInfo.equals(info) && info!=null)){
 			prevInfo = info;
 			ArrayList<String> lines = info.getLines();
 			String tempStr = "";
@@ -48,7 +48,6 @@ public class Output extends Thread {
 				// Sleep is needed if not will hang! Listen every sec
 				Output.sleep(1000);
 			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		}
 	}

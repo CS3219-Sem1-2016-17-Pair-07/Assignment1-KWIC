@@ -37,19 +37,19 @@ public class MainPage extends AnchorPane {
 	private TextArea pipeKWICIndex;
 
 	private static MainPage instance = null;
-	
-   private MainPage() throws IOException{
-	   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MAIN_PAGE_FXML_URL));
-	   loadFromFxml(fxmlLoader);
-   }
-   
-   public static MainPage getInstance() throws IOException {
-      if(instance == null) {
-         instance = new MainPage();
-      }
-      return instance;
-   }
-	   
+
+	private MainPage() throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MAIN_PAGE_FXML_URL));
+		loadFromFxml(fxmlLoader);
+	}
+
+	public static MainPage getInstance() throws IOException {
+		if (instance == null) {
+			instance = new MainPage();
+		}
+		return instance;
+	}
+
 	private void loadFromFxml(FXMLLoader fxmlLoader) throws IOException {
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -72,7 +72,7 @@ public class MainPage extends AnchorPane {
 	public TextArea getPipeKWICIndex() {
 		return pipeKWICIndex;
 	}
-	
+
 	public Button getSharedButton() {
 		return sharedBtn;
 	}
@@ -81,19 +81,22 @@ public class MainPage extends AnchorPane {
 		sharedBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
-				Shared shared = new Shared(inputLines.getText(), ignoreWords.getText());
-				sharedKWICIndex.setText(shared.getOutput());
+				try {
+					new Shared(inputLines.getText(), ignoreWords.getText());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		
+
 		pipeFilterBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
 				PipeAndFilter.getInstance(inputLines.getText(), ignoreWords.getText());
 			}
 		});
-		
-		
+
 	}
-	
+
 }

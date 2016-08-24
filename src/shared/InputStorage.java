@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/*
+ * Temporary input storage area for all input data
+ */
+
 public class InputStorage {
 
 	ArrayList<String> linesAL;

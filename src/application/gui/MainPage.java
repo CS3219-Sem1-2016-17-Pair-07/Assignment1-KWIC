@@ -34,13 +34,22 @@ public class MainPage extends AnchorPane {
 	@FXML
 	private TextArea sharedKWICIndex;
 	@FXML
-	public static TextArea pipeKWICIndex;
+	private TextArea pipeKWICIndex;
 
-	public MainPage() throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MAIN_PAGE_FXML_URL));
-		loadFromFxml(fxmlLoader);
-	}
-
+	private static MainPage instance = null;
+	
+   private MainPage() throws IOException{
+	   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MAIN_PAGE_FXML_URL));
+	   loadFromFxml(fxmlLoader);
+   }
+   
+   public static MainPage getInstance() throws IOException {
+      if(instance == null) {
+         instance = new MainPage();
+      }
+      return instance;
+   }
+	   
 	private void loadFromFxml(FXMLLoader fxmlLoader) throws IOException {
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -60,6 +69,10 @@ public class MainPage extends AnchorPane {
 		return sharedKWICIndex;
 	}
 
+	public TextArea getPipeKWICIndex() {
+		return pipeKWICIndex;
+	}
+	
 	public Button getSharedButton() {
 		return sharedBtn;
 	}

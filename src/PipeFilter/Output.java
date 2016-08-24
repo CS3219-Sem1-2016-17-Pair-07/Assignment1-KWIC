@@ -1,9 +1,11 @@
 package PipeFilter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import application.gui.MainPage;
+import javafx.scene.control.TextArea;
 
 public class Output extends Thread {
 
@@ -13,7 +15,7 @@ public class Output extends Thread {
 		this.inPipe = inPipe;
 	}
 
-	private void showOutput() {
+	private void showOutput() throws IOException {
 		Information info = inPipe.read();
 		ArrayList<String> lines = info.getLines();
 		String tempStr = "";
@@ -22,11 +24,10 @@ public class Output extends Thread {
 			tempStr = lines.get(i) + "\n" + tempStr;
 		}
 		tempStr = tempStr.trim();
-		System.out.println(MainPage.pipeKWICIndex.getText());
-		if (!tempStr.equals(MainPage.pipeKWICIndex.getText()) || MainPage.pipeKWICIndex.getText() != null) {
+		TextArea textArea = MainPage.getInstance().getPipeKWICIndex();
+		if (!tempStr.equals(textArea.getText())) {
 			// Update output using tempStr
-			System.out.println(tempStr);
-			MainPage.pipeKWICIndex.setText(tempStr);
+			textArea.setText(tempStr);
 		}
 	}
 

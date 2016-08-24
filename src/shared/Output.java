@@ -1,27 +1,15 @@
 package shared;
 
-import java.util.ArrayList;
+import java.io.IOException;
+
+import application.gui.MainPage;
 
 public class Output {
-	private ArrayList<String> outputLines;
 
-	public Output() {
-		outputLines = new ArrayList<String>();
-	}
-
-	public void add(String word) {
-		outputLines.add(word);
-	}
-
-	public ArrayList<String> getOutputLines() {
-		return outputLines;
-	}
-
-	public String getOutput() {
-		String output = "";
-		for (int i = 0; i < outputLines.size(); i++) {
-			output = output + outputLines.get(i) + "\n";
-		}
-		return output;
+	public Output() throws IOException {
+		MainPage.getInstance().getSharedKWICIndex().setText(IndexStorage.getInstance().getOutput());
+		// Need to clear instances so button can work again
+		IndexStorage.getInstance().clearInstance();
+		LineStorage.getInstance().clearInstance();
 	}
 }

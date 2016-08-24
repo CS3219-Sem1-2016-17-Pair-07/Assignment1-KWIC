@@ -17,8 +17,8 @@ public class Input {
 	HashSet<String> ignoreWordsHS;
 
 	public Input() throws IOException {
-		this.linesAL = removeInputDelimiters(MainPage.getInstance().getInputLines().getText());
-		this.ignoreWordsHS = removeIgnoreWordsDelimiters(MainPage.getInstance().getIgnoreWords().getText());
+		linesAL = removeInputDelimiters(MainPage.getInstance().getInputLines().getText());
+		ignoreWordsHS = removeIgnoreWordsDelimiters(MainPage.getInstance().getIgnoreWords().getText());
 		LineStorage.getInstance(linesAL, ignoreWordsHS);
 	}
 

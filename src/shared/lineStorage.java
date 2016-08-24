@@ -42,4 +42,8 @@ public class LineStorage {
 	public HashSet<String> getIgnoreWords() {
 		return ignoreWords;
 	}
+
+	public void clearInstance() {
+		instance = null;
+	}
 }

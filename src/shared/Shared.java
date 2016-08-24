@@ -2,25 +2,21 @@ package shared;
 
 import java.io.IOException;
 
-import application.gui.MainPage;
-
 /*
  * Main controller for shared data architecture
  */
 
 public class Shared {
 
-	private Output output;
-
 	public Shared() throws IOException {
+		// Calls the input class to read in data from UI and store into another
+		// class
 		new Input();
-		// Initialize output class
-		output = new Output();
 		// Calls the Circular Shifter
-		new CircularShift(output);
+		new CircularShift();
 		// Calls the Alphabetizer
-		new Alphabetizer(output.getOutputLines(), LineStorage.getInstance().getIgnoreWords());
-		// Set the output
-		MainPage.getInstance().getSharedKWICIndex().setText(output.getOutput());
+		new Alphabetizer();
+		// Calls the output class to get the output data and put to UI screen
+		new Output();
 	}
 }

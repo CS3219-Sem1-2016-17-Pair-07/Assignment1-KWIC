@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CircularShift {
-	public CircularShift(Output outputStorage) throws IOException {
+	public CircularShift() throws IOException {
 		for (int i = 0; i < LineStorage.getInstance().getSize(); i++) {
-			ArrayList<String> words = new ArrayList<String>(Arrays.asList(LineStorage.getInstance().getLine(i).split(" ")));
+			ArrayList<String> words = new ArrayList<String>(
+					Arrays.asList(LineStorage.getInstance().getLine(i).split(" ")));
 			for (int z = 0; z < words.size(); z++) {
 				String keyWord = words.get(0);
 
 				if (!LineStorage.getInstance().checkIgnoreWords(keyWord)) {
-					outputStorage.add(convertToLine(words));
+					IndexStorage.getInstance().add(convertToLine(words));
 				} else {
 					keyWord = keyWord.toLowerCase();
 				}

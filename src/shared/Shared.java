@@ -10,19 +10,19 @@ import application.gui.MainPage;
 
 public class Shared {
 
-	private Input inputStorage;
-	private Output outputStorage;
+	private Input input;
+	private Output output;
 
-	public Shared(String lines, String ignoreWords) throws IOException {
-		// Put lines and ignore words into input class
-		inputStorage = new Input(lines, ignoreWords);
+	public Shared() throws IOException {
+		// Calls the input to get the data from UI
+		input = new Input();
 		// Initialize output class
-		outputStorage = new Output();
+		output = new Output();
 		// Calls the Circular Shifter
-		new CircularShift(inputStorage, outputStorage);
+		new CircularShift(input, output);
 		// Calls the Alphabetizer
-		new Alphabetizer(outputStorage.getOutputLines(), inputStorage.getIgnoreWords());
+		new Alphabetizer(output.getOutputLines(), input.getIgnoreWords());
 		// Set the output
-		MainPage.getInstance().getSharedKWICIndex().setText(outputStorage.getOutput());
+		MainPage.getInstance().getSharedKWICIndex().setText(output.getOutput());
 	}
 }

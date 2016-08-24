@@ -82,7 +82,7 @@ public class MainPage extends AnchorPane {
 			@Override
 			public void handle(MouseEvent e) {
 				try {
-					new Shared(inputLines.getText(), ignoreWords.getText());
+					new Shared();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

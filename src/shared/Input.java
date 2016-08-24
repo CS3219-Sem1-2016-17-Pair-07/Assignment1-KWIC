@@ -1,8 +1,11 @@
 package shared;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+
+import application.gui.MainPage;
 
 /*
  * Temporary input storage area for all input data
@@ -13,9 +16,9 @@ public class Input {
 	ArrayList<String> linesAL;
 	HashSet<String> ignoreWordsHS;
 
-	public Input(String lines, String ignoreWords) {
-		this.linesAL = removeInputDelimiters(lines);
-		this.ignoreWordsHS = removeIgnoreWordsDelimiters(ignoreWords);
+	public Input() throws IOException {
+		this.linesAL = removeInputDelimiters(MainPage.getInstance().getInputLines().getText());
+		this.ignoreWordsHS = removeIgnoreWordsDelimiters(MainPage.getInstance().getIgnoreWords().getText());
 	}
 
 	private HashSet<String> removeIgnoreWordsDelimiters(String ignoreWords) {

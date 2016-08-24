@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 /*
  * Start of the program
  * Assumptions: Input must be correct with delimiters as ","
+ *              Ignore words will always be lower case
  */
 
 public class KWIC extends Application {

@@ -26,9 +26,4 @@ public class KWIC extends Application {
 			e.printStackTrace();
 		}
 	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
 }

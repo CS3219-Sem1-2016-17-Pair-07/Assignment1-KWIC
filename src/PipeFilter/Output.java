@@ -14,8 +14,14 @@ public class Output extends Thread{
 	private void showOutput(){
 		Information info = inPipe.read();
 		ArrayList<String> lines = info.getLines();
+		String tempStr = "";
+		// If input is modified, update output
 		for(int i=0; i<lines.size(); i++){
-			System.out.println(lines.get(i));
+			tempStr = lines.get(i) + "\n" + tempStr;
+		}
+		tempStr = tempStr.trim();
+		if(!tempStr.equals(output)){
+			// Update output using tempStr
 		}
 	}	
 	

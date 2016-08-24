@@ -36,7 +36,9 @@ public class MainPage extends AnchorPane {
 	@FXML
 	private TextArea ignoreWords;
 	@FXML
-	private TextArea kwicIndex;
+	private TextArea sharedKWICIndex;
+	@FXML
+	public static TextArea pipeKWICIndex;
 
 	public MainPage() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MAIN_PAGE_FXML_URL));
@@ -58,8 +60,8 @@ public class MainPage extends AnchorPane {
 		return ignoreWords;
 	}
 
-	public TextArea getKwicIndex() {
-		return kwicIndex;
+	public TextArea getSharedKWICIndex() {
+		return sharedKWICIndex;
 	}
 
 	public Button getSharedButton() {
@@ -70,19 +72,8 @@ public class MainPage extends AnchorPane {
 		sharedBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
-				String[] tempLines = inputLines.getText().split(",");
-				for (int i = 0; i < tempLines.length; i++) {
-					tempLines[i] = tempLines[i].trim();
-				}
-				ArrayList<String> lines = new ArrayList(Arrays.asList(tempLines));
-
-				String[] tempIgnoreWords = ignoreWords.getText().split(",");
-				HashSet<String> ignoreWords = new HashSet<String>();
-				for (int i = 0; i < tempIgnoreWords.length; i++) {
-					ignoreWords.add(tempIgnoreWords[i].trim().toLowerCase());
-				}
-				Shared shared = new Shared(lines, ignoreWords);
-				kwicIndex.setText(shared.getOutput());
+				Shared shared = new Shared(inputLines.getText(), ignoreWords.getText());
+				sharedKWICIndex.setText(shared.getOutput());
 			}
 		});
 		

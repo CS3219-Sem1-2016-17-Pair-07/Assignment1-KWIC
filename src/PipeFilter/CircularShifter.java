@@ -28,14 +28,14 @@ public class CircularShifter extends Thread{
 		Information info = inPipe.read();
 		ArrayList<String> shifted = new ArrayList<String>();
 		ArrayList<String> lines = info.getLines();
-		HashSet<String> ignoreWords = info.getIgnoreWords();
+		HashSet<String> ignoreWordsSet = info.getIgnoreWords();
 		
 		for(int i=0; i< lines.size(); i++){
-			ArrayList<String> words = new ArrayList(Arrays.asList(lines.get(i).split(" ")));
+			ArrayList<String> words = new ArrayList<String>(Arrays.asList(lines.get(i).split(" ")));
 			for(int z=0; z < words.size(); z++){
 				String keyWord = words.get(0);
 				
-				if(!ignoreWords.contains(keyWord.toLowerCase())){
+				if(!ignoreWordsSet.contains(keyWord.toLowerCase())){
 					shifted.add(convertToLine(words));
 				} else {
 					keyWord = keyWord.toLowerCase();
@@ -46,7 +46,7 @@ public class CircularShifter extends Thread{
 			}
 		}
 		
-		outPipe.write(new Information(shifted, ignoreWords));
+		outPipe.write(new Information(shifted, ignoreWordsSet));
 	}	
 	
 	private String convertToLine(ArrayList<String> words){

@@ -6,17 +6,21 @@ import java.util.HashSet;
 
 public class Input extends Thread {
 	
-	private String lines;
-	private String ignoreWords;
+	private String inputLines;
+	private String inputIgnoreWords;
 	private Pipe outPipe;
 	
-	public Input(String lines, String ignoreWords, Pipe outPipe){
-		this.lines = lines;
-		this.ignoreWords = ignoreWords;
+	public Input(String inputLines, String inputIgnoreWords, Pipe outPipe){
+		this.inputLines = inputLines;
+		this.inputIgnoreWords = inputIgnoreWords;
 		this.outPipe = outPipe;
 	}
 	
 	public void run(){
+        outPipe.write(parseInput(inputLines,inputIgnoreWords));
+	}
+	
+	public static Information parseInput(String lines, String ignoreWords){
 		String [] tempLines = lines.split(",");
 		for(int i=0; i<tempLines.length; i++){
 			tempLines[i] = tempLines[i].trim();
@@ -24,10 +28,10 @@ public class Input extends Thread {
 		ArrayList<String> linesList = new ArrayList<String>(Arrays.asList(tempLines));
 		
         String [] tempIgnoreWords = ignoreWords.split(",");
-        HashSet<String> ignoreWords = new HashSet<String>();
+        HashSet<String> ignoreWordsSet = new HashSet<String>();
         for(int i=0; i<tempIgnoreWords.length ;i++){
-			ignoreWords.add(tempIgnoreWords[i].trim().toLowerCase());
+			ignoreWordsSet.add(tempIgnoreWords[i].trim().toLowerCase());
 		}
-        outPipe.write(new Information(linesList, ignoreWords));
+        return new Information(linesList, ignoreWordsSet);
 	}
 }

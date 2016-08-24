@@ -14,7 +14,6 @@ public class Alphabetizer extends Thread {
 	
 	private void alphabetized(){
 		Information info = inPipe.read();
-		System.out.println(info.getLines().get(0));
 		Collections.sort(info.getLines());
 		outPipe.write(new Information(info.getLines(), info.getIgnoreWords()));
 	}	

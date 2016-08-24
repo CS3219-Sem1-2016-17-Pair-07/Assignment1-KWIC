@@ -10,6 +10,6 @@ public class Output {
 		MainPage.getInstance().getSharedKWICIndex().setText(IndexStorage.getInstance().getOutput());
 		// Need to clear instances so button can work again
 		IndexStorage.getInstance().clearInstance();
-		LineStorage.getInstance().clearInstance();
+		InputStorage.getInstance().clearInstance();
 	}
 }

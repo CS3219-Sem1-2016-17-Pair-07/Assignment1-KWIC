@@ -13,6 +13,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import shared.Shared;
 
+/*
+ * This page contains all the functions for the UI 
+ * (Works together with the mainpage.fxml)
+ */
+
 public class MainPage extends AnchorPane {
 
 	private static final String MAIN_PAGE_FXML_URL = "MainPage.fxml";

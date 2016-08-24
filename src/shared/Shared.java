@@ -12,9 +12,9 @@ public class Shared {
 		// Calls the input class to read in data from UI and store into another
 		// class
 		new Input();
-		// Calls the Circular Shifter
+		// Calls the Circular Shifter to do the circular shifting
 		new CircularShift();
-		// Calls the Alphabetizer
+		// Calls the Alphabetizer to do alphabetizing
 		new Alphabetizer();
 		// Calls the output class to get the output data and put to UI screen
 		new Output();

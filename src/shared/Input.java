@@ -16,10 +16,11 @@ public class Input {
 	ArrayList<String> linesAL;
 	HashSet<String> ignoreWordsHS;
 
+	// Stores the data into shared Line
 	public Input() throws IOException {
 		linesAL = removeInputDelimiters(MainPage.getInstance().getInputLines().getText());
 		ignoreWordsHS = removeIgnoreWordsDelimiters(MainPage.getInstance().getIgnoreWords().getText());
-		LineStorage.getInstance(linesAL, ignoreWordsHS);
+		InputStorage.getInstance(linesAL, ignoreWordsHS);
 	}
 
 	private HashSet<String> removeIgnoreWordsDelimiters(String ignoreWords) {

@@ -4,26 +4,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class LineStorage {
+public class InputStorage {
 
 	ArrayList<String> lines;
 	HashSet<String> ignoreWords;
 
-	private static LineStorage instance = null;
+	private static InputStorage instance = null;
 
-	private LineStorage(ArrayList<String> linesAL, HashSet<String> ignoreWordsHS) {
+	private InputStorage(ArrayList<String> linesAL, HashSet<String> ignoreWordsHS) {
 		this.lines = linesAL;
 		this.ignoreWords = ignoreWordsHS;
 	}
 
-	public static LineStorage getInstance(ArrayList<String> linesAL, HashSet<String> ignoreWordsHS) throws IOException {
+	public static InputStorage getInstance(ArrayList<String> linesAL, HashSet<String> ignoreWordsHS) throws IOException {
 		if (instance == null) {
-			instance = new LineStorage(linesAL, ignoreWordsHS);
+			instance = new InputStorage(linesAL, ignoreWordsHS);
 		}
 		return instance;
 	}
 
-	public static LineStorage getInstance() {
+	public static InputStorage getInstance() {
 		return instance;
 	}
 

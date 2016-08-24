@@ -6,13 +6,13 @@ import java.util.Arrays;
 
 public class CircularShift {
 	public CircularShift() throws IOException {
-		for (int i = 0; i < LineStorage.getInstance().getSize(); i++) {
+		for (int i = 0; i < InputStorage.getInstance().getSize(); i++) {
 			ArrayList<String> words = new ArrayList<String>(
-					Arrays.asList(LineStorage.getInstance().getLine(i).split(" ")));
+					Arrays.asList(InputStorage.getInstance().getLine(i).split(" ")));
 			for (int z = 0; z < words.size(); z++) {
 				String keyWord = words.get(0);
 
-				if (!LineStorage.getInstance().checkIgnoreWords(keyWord)) {
+				if (!InputStorage.getInstance().checkIgnoreWords(keyWord)) {
 					IndexStorage.getInstance().add(convertToLine(words));
 				} else {
 					keyWord = keyWord.toLowerCase();

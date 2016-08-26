@@ -29,6 +29,8 @@ public class MainPage extends AnchorPane {
 	@FXML
 	private Label kwicIndexLabel;
 	@FXML
+	private Label helpLabel;
+	@FXML
 	private Button sharedBtn;
 	@FXML
 	private Button pipeFilterBtn;

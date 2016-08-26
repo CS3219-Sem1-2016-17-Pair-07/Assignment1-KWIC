@@ -8,10 +8,10 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1107.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextArea fx:id="inputLines" layoutX="14.0" layoutY="77.0" prefHeight="665.0" prefWidth="311.0" />
-      <TextArea fx:id="ignoreWords" layoutX="348.0" layoutY="77.0" prefHeight="665.0" prefWidth="311.0" />
-      <Button fx:id="pipeFilterBtn" layoutX="671.0" layoutY="213.0" mnemonicParsing="false" text="Pipe &amp; Filter &gt;" />
-      <TextArea fx:id="pipeKWICIndex" layoutX="772.0" layoutY="77.0" prefHeight="323.0" prefWidth="311.0" editable="false" mouseTransparent="true" focusTraversable="false"/>
+      <TextArea fx:id="inputLines" layoutX="14.0" layoutY="77.0" prefHeight="633.0" prefWidth="311.0" promptText="Please use a comma (,) for delimiters between input lines" wrapText="true" />
+      <TextArea fx:id="ignoreWords" layoutX="348.0" layoutY="77.0" prefHeight="633.0" prefWidth="311.0" promptText="Please use a comma (,) for delimiters between ignore words" wrapText="true" />
+      <Button fx:id="pipeFilterBtn" layoutX="669.0" layoutY="208.0" mnemonicParsing="false" text="Pipe &amp; Filter &gt;" />
+      <TextArea fx:id="pipeKWICIndex" editable="false" focusTraversable="false" layoutX="772.0" layoutY="77.0" mouseTransparent="true" prefHeight="302.0" prefWidth="311.0" />
       <Label fx:id="inputLinesLabel" layoutX="123.0" layoutY="32.0" style="-fx-font-weight: bold;" text="Input Lines">
          <font>
             <Font size="18.0" />
@@ -27,7 +27,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="sharedBtn" layoutX="666.0" layoutY="551.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Shared &gt;" />
-      <TextArea fx:id="sharedKWICIndex" layoutX="772.0" layoutY="410.0" prefHeight="332.0" prefWidth="311.0"  editable="false" mouseTransparent="true" focusTraversable="false"/>
+      <Button fx:id="sharedBtn" layoutX="669.0" layoutY="536.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Shared &gt;" />
+      <TextArea fx:id="sharedKWICIndex" editable="false" focusTraversable="false" layoutX="772.0" layoutY="410.0" mouseTransparent="true" prefHeight="302.0" prefWidth="311.0" />
+      <Label fx:id="helpLabel" layoutX="38.0" layoutY="719.0" text="Hint: All delimiters must be a comma (,)" />
    </children>
 </fx:root>

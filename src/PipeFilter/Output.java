@@ -23,7 +23,7 @@ public class Output extends Thread {
 		Information info = inPipe.read();
 		
 		// If input is modified, update output
-		if(prevInfo == null || (!prevInfo.equals(info) && info!=null)){
+		if(prevInfo == null || (info!=null && !prevInfo.equals(info))){
 			prevInfo = info;
 			ArrayList<String> lines = info.getLines();
 			String tempStr = "";

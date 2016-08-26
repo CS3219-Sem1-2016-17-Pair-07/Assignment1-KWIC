@@ -34,7 +34,7 @@ public class CircularShifter extends Thread{
 	private void circularShift(){
 		Information info = inPipe.read();
 		// If first time running or previous info is different
-		if(prevInfo == null || (!prevInfo.equals(info)&& info!=null)){
+		if(prevInfo == null || (info!=null && !prevInfo.equals(info))){
 			
 			prevInfo = info;
 			ArrayList<String> shifted = new ArrayList<String>();

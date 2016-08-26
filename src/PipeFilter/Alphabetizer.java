@@ -19,7 +19,7 @@ public class Alphabetizer extends Thread {
 	
 	private void alphabetized(){
 		Information info = inPipe.read();
-		if(prevInfo == null || (!prevInfo.equals(info) && info!=null)){
+		if(prevInfo == null || (info!=null && !prevInfo.equals(info))){
 			prevInfo = info;
 			ArrayList<String> temp = info.getLines();
 			temp = capKeywords(temp);

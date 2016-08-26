@@ -3,6 +3,7 @@ package application.gui;
 import java.io.IOException;
 
 import PipeFilter.PipeAndFilter;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -85,6 +86,7 @@ public class MainPage extends AnchorPane {
 	}
 
 	public void initialise() {
+		Platform.runLater( () -> this.requestFocus() );
 		sharedBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {

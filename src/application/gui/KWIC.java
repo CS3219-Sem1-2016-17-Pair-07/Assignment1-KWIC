@@ -18,6 +18,7 @@ public class KWIC extends Application {
 		try {
 			MainPage page = MainPage.getInstance();
 			Scene scene = new Scene(page);
+			primaryStage.setTitle("KWIC Index");
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
